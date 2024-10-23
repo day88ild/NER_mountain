@@ -166,7 +166,5 @@ avg_pos_true(model, train_dataload)
 
 avg_pos_true(model, test_dataload)
 
-torch.save(model, os.path.join(DATA_PATH, "roberta_fine_tuned.pt"))
-
-
+torch.save(model.cpu(), os.path.join(DATA_PATH, "roberta_fine_tuned.pt"))
 
