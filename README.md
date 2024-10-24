@@ -38,7 +38,7 @@ Make sure you have Docker installed on your machine. If not, install it from the
 To build the Docker image directly from the GitHub repository, use the following command:
 
 ```bash
-docker build -t ner-mountain https://github.com/your_username/NER_mountain.git
+docker build -t ner-mountain https://github.com/day88ild/NER_mountain.git
 ```
 
 To run a container with inference.py run the following command after creating an image:
