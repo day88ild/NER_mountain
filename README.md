@@ -16,6 +16,7 @@ Here's an overview of the files in the repository:
 - `requirements.txt`: List of dependencies required to run the project.
 - `training_new_model.ipynb`: Jupyter notebook for training a new model from scratch.
 - `Report.pdf`: This file provides report with used and future strategies and results.
+- `demo.ipynb`: Demo
 
 ### Directories
 
@@ -24,6 +25,9 @@ Here's an overview of the files in the repository:
 ## Dataset
 
 The dataset used for this project is from Hugging Face and is designed for NER tasks, specifically focusing on mountain names. It consists of labeled tokens where each token is classified as either a part of a mountain name or not. The dataset can be found here: [NER-Mountains Dataset on Hugging Face](https://huggingface.co/datasets/telord/ner-mountains-first-dataset).
+
+## Model
+The main resulting model is fine-tuned with LORA [distilroberta-base](https://huggingface.co/day88ild/ner_mountain_roberta_fine_tuned/tree/main)
 
 ## Getting Started
 

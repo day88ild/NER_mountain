@@ -8,11 +8,11 @@ WORKDIR /app
 COPY requirements.txt .
 
 # Install the dependencies specified in the requirements file
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install --no-cache-dir --timeout=3000 -r requirements.txt
 
 # Copy the rest of the project files into the container
 COPY . .
 
 # Run the inference script when the container starts
-CMD ["python", "inference.py", "--model_path", "data/models/roberta_fine_tuned.pt"]
+CMD ["python", "inference.py"]
 

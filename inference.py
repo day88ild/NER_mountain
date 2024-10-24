@@ -1,6 +1,8 @@
 import torch
 import os
 from transformers import RobertaTokenizerFast
+from peft import PeftModel, PeftConfig
+from transformers import RobertaForTokenClassification
 import peft
 from colorama import Fore, Back, Style, init
 import argparse
@@ -29,7 +31,7 @@ Below are some EXAMPLES if you cannot come up with one:
 # Define the maximum length for the tokenized sentence.
 MAX_LENGTH = 32
 
-def inference_ner(path_to_model, sentence):
+def inference_ner(sentence):
 
     # Initialize the tokenizer for RoBERTa using the pre-trained 'roberta-base' version.
     tokenizer = RobertaTokenizerFast.from_pretrained('roberta-base', add_prefix_space=True)
@@ -47,7 +49,11 @@ def inference_ner(path_to_model, sentence):
                                    return_attention_mask=True)
     
     # Load the fine-tuned model from the specified path.
-    model = torch.load(path_to_model)
+
+    config = PeftConfig.from_pretrained("day88ild/ner_mountain_roberta_fine_tuned")
+    base_model = RobertaForTokenClassification.from_pretrained("distilroberta-base")
+    model = PeftModel.from_pretrained(base_model, "day88ild/ner_mountain_roberta_fine_tuned")
+
     # Set the model to evaluation mode, disabling layers like dropout.
     model.eval()
     
@@ -92,7 +98,6 @@ def inference_ner(path_to_model, sentence):
 # If the script is being run directly, execute the inference function.
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Run NER model inference.")
-    parser.add_argument("--model_path", type=str, help="Path to the model file.")
     parser.add_argument("--sentence", type=str, help="The sentence to be processed by the model.")
     
     args = parser.parse_args()
@@ -101,9 +106,8 @@ if __name__ == "__main__":
     print(GREETING_TEXT)
 
     # If arguments are not provided, prompt the user for input
-    model_path = args.model_path or input("Enter the path to the model file: ")
     sentence = args.sentence or input("Enter the sentence you want to pass into the model: ")
     
     
-    inference_ner(model_path, sentence)
+    inference_ner(sentence)
 
