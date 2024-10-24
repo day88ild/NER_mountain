@@ -15,7 +15,7 @@ Here's an overview of the files in the repository:
 - `README.md`: This file, providing an overview and instructions for the project.
 - `requirements.txt`: List of dependencies required to run the project.
 - `training_new_model.ipynb`: Jupyter notebook for training a new model from scratch.
-- `Report.md`: This file provides report with used and future strategies and results.
+- `Report.pdf`: This file provides report with used and future strategies and results.
 
 ### Directories
 
@@ -35,7 +35,7 @@ Make sure you have Docker installed on your machine. If not, install it from the
 
 ### Building the Docker Image
 
-To build the Docker image directly from the GitHub repository, use the following command:
+To build the Docker image directly from the GitHub repository, use the following command (it might take a while due to installation of large python libraries):
 
 ```bash
 docker build -t ner-mountain https://github.com/day88ild/NER_mountain.git
