@@ -8,7 +8,8 @@ WORKDIR /app
 COPY requirements.txt .
 
 # Install the dependencies specified in the requirements file
-RUN pip install --no-cache-dir --timeout=3000 -r requirements.txt
+RUN pip install --no-cache-dir --upgrade pip && \
+    pip install --no-cache-dir --timeout=3000 -r requirements.txt
 
 # Copy the rest of the project files into the container
 COPY . .
